@@ -1,32 +1,18 @@
-'use strict';
-var orm = require('pg-orm');
-
-var person = {
-  'tableName': 'user',
-  'tableProperties': {
-    'id': {
-      'type': 'key'
+module.exports = (sequelize, DataTypes) => {
+  const User = sequelize.define('User', {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    'first_name': { 
-      'type': 'string',
-      'required': true
+  }, {
+    classMethods: {
+      associate: (models) => {
+        User.hasMany(models.Movie, {
+          foreignKey: 'movieId',
+          as: 'userMovies',
+        });
+      },
     },
-    'last_name': { 
-      'type': 'string',
-      'required': true
-    },
-    'password': { 
-      'type': 'string',
-      'required': true
-    },
-    'email': { 
-      'type': 'string',
-      'required': true
-    }
-  }
+  });
+  return User;
 };
-
-
-
-
-module.exports = orm.build(person);
