@@ -20,9 +20,10 @@ app.controller('loginController', function(userFactory, $location, $cookies){
 
 	this.register = function(){
 		self.registerErrors = [];
-		userFactory.register(self.newUser).then(function(data){
+		userFactory.register(self.newUser, function(data){
+			console.log("stuffff", data)
 			if(data.email){
-				//console.log('registered passed:', data)
+				console.log('registered passed:', data)
 				data.id = data.user_id;
 				saveCookies(data)
 				$location.url('/');

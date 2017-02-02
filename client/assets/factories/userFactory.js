@@ -1,16 +1,22 @@
 app.factory('userFactory', ['$http', function($http){
 	var user = {};
 	function UserFactory(){
+		var self = this
+		var users = [];
 
-		this.register = function(newUser){
-			return $http.post('/register', newUser).then(function(ret){
-				if(ret.errors){
-					return ret;
-				} else {
-					user = ret.data;
-					return user;
-				}
-			})
+		this.register = function(newUser, callback){
+			console.log(newUser);
+			// return $http.post('/register', newUser).then(function(ret){
+			// 	if(ret.errors){
+			// 		return ret;
+			// 	} else {
+			// 		user = ret.data;
+			// 		return user;
+			// 	}
+			// })
+
+			users.push(newUser);
+			callback(newUser)
 		}
 
 		this.checkUser = function(callback){
