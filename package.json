@@ -6,7 +6,8 @@
   "dependencies": {
     "body-parser": "^1.16.0",
     "express": "^4.14.1",
-    "guidebox": "^1.1.1"
+    "guidebox": "^1.1.1",
+    "pg-orm": "0.0.4"
   },
   "devDependencies": {},
   "scripts": {
