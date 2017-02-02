@@ -1,33 +1,36 @@
-dizbiz
+<!-- dizbiz -->
 
 <!DOCTYPE html>
-<html>
+<html ng-app='app'>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>CliqPix</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
-
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="assets/static/main.css">
     <!--CSS FOR LIGHTBOX -->
     <link href="featherlight-1.5.1/release/featherlight.min.css" type="text/css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/fa1817fa3f.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="featherlight-1.5.1/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="app.js"></script>
+    <script src="angular/angular.min.js"></script>
+    <script src="angular-route/angular-route.min.js"></script>
+    <script src="angular-cookies/angular-cookies.js"></script>
+    <script src="assets/app.js"></script>
+    <script src="assets/controllers/loginController.js"></script>
+    <script src="assets/controllers/apiController.js"></script>    
+    <script src="assets/factories/userFactory.js"></script>
+
+
   </head>
   <body>
-    <h1 class="title"><a href="index.html" draggable="false">CliqFlix </a></h1>
-    <form class="js-search-form" action="#">
-      <label for="query"></label>
-      <input type="text" class="js-query" placeholder="Enter a movie name">
-      <button type="submit" name="submit" class="submit" onclick="return">Search</button>
-    </form>
-    
-    <div class="js-search-results">
-    
+
+    <div ng-view>
+      
     </div>
+<!--         <div class="js-search-results">
     
+    </div> -->
   </body>
 </html>
