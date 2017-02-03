@@ -56,7 +56,7 @@ app.controller('apiController', function($location, $cookies){
           var watchLinks = data.purchase_web_sources[0].link;
           var description =
             "<div class='cardDescription hidden'>" +
-              "<h1 class='movie-title'>" + data.title + "</h1>" +
+              "<h1 class='movie-title'>" + data.title + "</h1>" + "<button>Add to your CliqReel</button>"+
               "<h3 class='mpaa-rating'> Rated: " + rated +
               "<a class='commonsense' target='_blank' title='Common Sense Media' href=" + commonSenseMedia + " ><i class='fa fa-check-circle-o' aria-hidden='true'></i></a><br>" +"</h3>" +
               "<h5 class='genre'> Genre: " + genre + "</h5>" +
@@ -140,7 +140,7 @@ app.controller('apiController', function($location, $cookies){
         // self.index();
   } else {
     // No cookies - go home.
-    $location.url('/login');
+    // $location.url('/login');
   }
 })
 

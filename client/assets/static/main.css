@@ -1,8 +1,16 @@
-html {
-  background-image:url( "http://api.thumbr.it/whitenoise-361x370.png?background=9ca0a1ff&noise=626262&density=15&opacity=15");
+.api-page {
   text-align: center;
   font-family: roboto;
   color: white;
+  left: 0px; 
+  top: 0px; 
+  overflow: hidden; 
+  margin: 0px; 
+  padding: 0px; 
+  height: 813px; 
+  width: 812px; 
+  z-index: 1000; 
+  position: fixed;"
 }
 
 div {
