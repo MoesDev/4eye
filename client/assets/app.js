@@ -13,7 +13,7 @@ app.config(function($routeProvider){
       controllerAs: 'lC'
     })
     .otherwise({
-      redirectTo: '/login'
+      redirectTo: '/'
     })
 });
 
