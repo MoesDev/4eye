@@ -1,9 +1,9 @@
 var mongoose 	 = require('mongoose');
 
 var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
-		passRegex  = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!\s){8,32}/;
+		passRegex  = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!\s){4,32}/;
 
-var bcrypt 		 = require('bcrypt'),
+var bcrypt 		 = require('bcryptjs'),
 		saltRounds = 10;
 
 var UserSchema = new mongoose.Schema({
@@ -13,12 +13,12 @@ var UserSchema = new mongoose.Schema({
 		required: [true, 'Email is required for registration!'],
 		unique: 	true,
 		trim: 		true,
-		validate: {
-			validator: function(emailStr){
-				return emailRegex.test(emailStr);
-			},
-			message: 'Please enter a valid email address'
-		}
+		// validate: {
+		// 	validator: function(emailStr){
+		// 		return emailRegex.test(emailStr);
+		// 	},
+		// 	message: 'Please enter a valid email address'
+		// }
 	},
 	first_name: {
 		type: 		String,
@@ -33,17 +33,17 @@ var UserSchema = new mongoose.Schema({
 	password: {
 		type: 		String,
 		required: [true, 'Password is required!'],
-		validate: {
-			validator: function(pass){
-				return passRegex.test(pass);
-			},
-			message: 'Passwords must be between 8 and 32 characters, contain 1 uppercase, 1 lower case and 1 number.  Spaces are not allowed.'
-		}
+		// validate: {
+		// 	validator: function(pass){
+		// 		return passRegex.test(pass);
+		// 	},
+		// 	message: 'Passwords must be between 8 and 32 characters, contain 1 uppercase, 1 lower case and 1 number.  Spaces are not allowed.'
+		// }
 	},
-	birthday: {
-		type: 		Date,
-		required: [true, 'Your Birthday is required for registration']
-	},
+	// birthday: {
+	// 	type: 		Date,
+	// 	required: [true, 'Your Birthday is required for registration']
+	// },
 }, {timestamps: true});
 
 

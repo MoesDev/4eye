@@ -1,5 +1,9 @@
-app.controller('apiController', function($location, $cookies){
+app.controller('apiController', function($scope, $location, $cookies){
   var self = this;
+
+  $scope.user_name = $cookies.get('userName');
+
+  console.log("cookies", $cookies.get('userName'));
   $(document).ready(function() {
 
   var OMDB_BASE_URL = "https://www.omdbapi.com/?i=";

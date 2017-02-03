@@ -24,6 +24,8 @@ process.on('SIGINT', function(){
 	})
 })
 
+mongoose.Promise = global.Promise;
+
 fs.readdirSync(models_path).forEach(function(file){
 	if (reg.test(file)){
 		require(models_path + '/' + file);

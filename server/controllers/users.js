@@ -4,26 +4,32 @@ var mongoose = require('mongoose'),
 function UsersController() {
 
 	this.register = function(req, res) {
+		console.log("REQ BODY#########",req.body)
+		
 		if (req.body.password != req.body.passwordconfirm) {
 			res.json({
 				errors: { password: { message: 'Passwords must match!' } }
 			});
 		} else {
+			console.log("Made it in the pELSE")
 			var newUser = new User({
-				email: 			req.body.email,
+				email: req.body.email,
 				first_name: req.body.first_name,
-				last_name: 	req.body.last_name,
-				password: 	req.body.password,
-				birthday: 	req.body.birthday
-			});
+				last_name: req.body.last_name,
+				password: req.body.password
+				// birthday: 	req.body.birthday
+			})
+			console.log("newUser", newUser);
 
 			newUser.save(function(err, user) {
 				if (err) {
+					console.log("errrrr", err)
 					if (11000 === err.code) {
 						res.json({
 							errors: {	email: { message: 'Email address is in use.  Please use a different email address.'	}	}
 						});
 					} else {
+						console.log("----- ELSE")
 						res.json(err);
 					}
 				} else {
@@ -31,9 +37,10 @@ function UsersController() {
 						user_id: 		user._id,
 						first_name: user.first_name,
 						last_name: 	user.last_name,
-						email: 			user.email,
-						birthday: 	user.birthday
+						email: 			user.email
+						// birthday: 	user.birthday
 					}
+					console.log("USErrrrrrrrrrr",returnedUser)
 					res.json(returnedUser);
 				}
 			})
@@ -41,7 +48,8 @@ function UsersController() {
 	}
 
 	this.login = function(req, res) {
-		User.find({	email: req.body.email	}, function(err, user) {
+		console.log("REQ BODY#########",req.body)
+		User.find({	email: req.body.email}, function(err, user) {
 			if (err) {
 				res.json(err);
 			} else if (user[0]) {

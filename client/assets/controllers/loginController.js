@@ -8,6 +8,8 @@ app.controller('loginController', function(userFactory, $location, $cookies){
 	this.user_id 	 = '';
 	this.user_name = '';
 
+	console.log("cookies", $cookies.get('userName'));
+
 	function saveCookies(data) {
 		this.user_id 	  = data.id;
 		this.user_name  = data.first_name + " " + data.last_name;
@@ -34,6 +36,7 @@ app.controller('loginController', function(userFactory, $location, $cookies){
 				}
 			}
 		})
+		self.newUser={};
 	}
 
 	this.login = function(){
@@ -47,6 +50,7 @@ app.controller('loginController', function(userFactory, $location, $cookies){
 					self.loginErrors.push(data.errors.Register.message);
 				}
 			})
+		self.loginAttempt ={};
 	}
 
 })
